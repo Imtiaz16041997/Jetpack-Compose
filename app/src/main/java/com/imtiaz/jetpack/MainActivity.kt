@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.fonts.FontStyle
 import android.os.Bundle
+import android.widget.Switch
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -15,6 +17,8 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,8 +62,9 @@ class MainActivity : ComponentActivity() {
                     },
                     floatingActionButtonPosition = FabPosition.End
                 ) {
-                    var value = "Android"
-                    Greeting(name = "World")
+                    ShowSwitch()
+//                    var value = "Android"
+//                    Greeting(name = "World")
                 }
 
             }
@@ -85,4 +90,20 @@ fun DefaultPreview() {
     JetPackTheme {
         Greeting("Android")
     }
+}
+
+@Composable
+fun ShowSwitch(){
+    val isChecked = remember {
+        mutableStateOf(true)
+    }
+     Switch(
+         checked = isChecked.value,
+         onCheckedChange = {
+             isChecked.value = it
+         }, modifier = Modifier.run {
+             size(20.dp)
+             padding(100.dp)
+         }
+     )
 }
