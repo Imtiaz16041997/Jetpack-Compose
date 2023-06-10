@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
                     },
                     floatingActionButtonPosition = FabPosition.End
                 ) {
-                    ShowSwitch()
+//                    ShowSwitch()
 //                    var value = "Android"
 //                    Greeting(name = "World")
                 }
